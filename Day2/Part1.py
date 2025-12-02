@@ -1,0 +1,39 @@
+data = (
+    "245284-286195,797927-983972,4949410945-4949555758,115-282,"
+    "8266093206-8266228431,1-21,483873-655838,419252-466133,6190-13590,"
+    "3876510-4037577,9946738680-9946889090,99954692-100029290,2398820-2469257,"
+    "142130432-142157371,9797879567-9798085531,209853-240025,85618-110471,"
+    "35694994-35766376,4395291-4476150,33658388-33694159,680915-772910,"
+    "4973452995-4973630970,52-104,984439-1009605,19489345-19604283,"
+    "22-42,154149-204168,7651663-7807184,287903-402052,2244-5558,"
+    "587557762-587611332,307-1038,16266-85176,422394377-422468141"
+)
+
+def sum_invalid_in_ranges(ranges_line):
+    parts = [p.strip() for p in ranges_line.split(",") if p.strip()]
+    total = 0
+
+    for part in parts:
+        lo, hi = map(int, part.split("-"))
+
+        k = 1
+        # continue while 2k-digit doubled numbers can fall inside [lo, hi]
+        while 10 ** (2*k - 1) <= hi:
+            div = 10**k + 1            # repeated-number formula: s*(10^k+1)
+            s_min = 10**(k-1)          # smallest k-digit block
+            s_max = 10**k - 1          # largest  k-digit block
+
+            # s must produce a number within [lo, hi]
+            lo_s = max(s_min, (lo + div - 1) // div)   # ceil(lo/div)
+            hi_s = min(s_max, hi // div)               # floor(hi/div)
+
+            if lo_s <= hi_s:
+                count = hi_s - lo_s + 1
+                sum_s = (lo_s + hi_s) * count // 2     # arithmetic sum
+                total += sum_s * div                   # convert to full number
+
+            k += 1
+
+    return total
+
+print("Sum of invalid IDs =", sum_invalid_in_ranges(data))
