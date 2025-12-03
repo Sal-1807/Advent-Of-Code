@@ -19,4 +19,4 @@ with open("data.txt") as f:
         bank = line.strip()
         total += max_12_digit_number(bank, 12)
 
-print("Total output joltage =", total)
+print("Total output joltage ", total)
