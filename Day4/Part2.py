@@ -13,7 +13,6 @@ def total_removed(filename="data.txt"):
     while True:
         to_remove = []
 
-        # Find all accessible @ rolls
         for r in range(R):
             for c in range(C):
                 if grid[r][c] != '@':
@@ -29,11 +28,9 @@ def total_removed(filename="data.txt"):
                 if adj < 4:
                     to_remove.append((r, c))
 
-        # If none found, stop
         if not to_remove:
             break
 
-        # Remove them
         for r, c in to_remove:
             grid[r][c] = '.'
 

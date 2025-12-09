@@ -7,8 +7,8 @@ with open("data.txt") as f:
         if not line:
             continue
 
-        direction = line[0]          # 'L' or 'R'
-        distance = int(line[1:])     # the number
+        direction = line[0]          
+        distance = int(line[1:])     
 
         if direction == 'L':
             pos = (pos - distance) % 100

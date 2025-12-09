@@ -17,20 +17,18 @@ def sum_invalid_in_ranges(ranges_line):
         lo, hi = map(int, part.split("-"))
 
         k = 1
-        # continue while 2k-digit doubled numbers can fall inside [lo, hi]
         while 10 ** (2*k - 1) <= hi:
-            div = 10**k + 1            # repeated-number formula: s*(10^k+1)
-            s_min = 10**(k-1)          # smallest k-digit block
-            s_max = 10**k - 1          # largest  k-digit block
+            div = 10**k + 1            
+            s_min = 10**(k-1)          
+            s_max = 10**k - 1          
 
-            # s must produce a number within [lo, hi]
-            lo_s = max(s_min, (lo + div - 1) // div)   # ceil(lo/div)
-            hi_s = min(s_max, hi // div)               # floor(hi/div)
+            lo_s = max(s_min, (lo + div - 1) // div)   
+            hi_s = min(s_max, hi // div)               
 
             if lo_s <= hi_s:
                 count = hi_s - lo_s + 1
-                sum_s = (lo_s + hi_s) * count // 2     # arithmetic sum
-                total += sum_s * div                   # convert to full number
+                sum_s = (lo_s + hi_s) * count // 2    
+                total += sum_s * div               
 
             k += 1
 

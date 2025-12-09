@@ -19,10 +19,7 @@ with open("data.txt", "r") as file:
         
         
         current_position = new_position
-        #land directly on zero
-        #if(current_position == 0):
-        #
-        #cross over a zero
+        
         if current_position == 0:
             numberOfZeros += 1
         number_of_rotations = distance // 100

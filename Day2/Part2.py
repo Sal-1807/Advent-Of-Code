@@ -14,13 +14,11 @@ def generate_repeated_numbers(limit):
 
     max_len = len(str(limit))
 
-    # total length L
     for L in range(2, max_len + 1):
-        # number of repeats r: block length k = L // r
         for r in range(2, L + 1):
             if L % r != 0:
                 continue
-            k = L // r  # block length
+            k = L // r  
             if k == 0:
                 continue
 
@@ -45,10 +43,8 @@ def solve(dataset):
         lo, hi = map(int, part.split("-"))
         ranges.append((lo, hi))
 
-    # find max upper bound for limit
     max_hi = max(hi for _, hi in ranges)
 
-    # generate all repeated-pattern numbers up to the maximum
     repeated_nums = generate_repeated_numbers(max_hi)
 
     total = 0
@@ -76,13 +72,11 @@ def generate_repeated_numbers(limit):
 
     max_len = len(str(limit))
 
-    # total length L
     for L in range(2, max_len + 1):
-        # number of repeats r: block length k = L // r
         for r in range(2, L + 1):
             if L % r != 0:
                 continue
-            k = L // r  # block length
+            k = L // r  
             if k == 0:
                 continue
 
@@ -107,10 +101,8 @@ def solve(dataset):
         lo, hi = map(int, part.split("-"))
         ranges.append((lo, hi))
 
-    # find max upper bound for limit
     max_hi = max(hi for _, hi in ranges)
 
-    # generate all repeated-pattern numbers up to the maximum
     repeated_nums = generate_repeated_numbers(max_hi)
 
     total = 0

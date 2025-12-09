@@ -1,10 +1,8 @@
-# Advent-style puzzle: forklift-accessible rolls
 
 def count_accessible(filename="data.txt"):
     grid = [list(line.strip()) for line in open(filename)]
     R, C = len(grid), len(grid[0])
 
-    # 8-direction offsets
     dirs = [
         (-1, -1), (-1, 0), (-1, 1),
         (0, -1),           (0, 1),

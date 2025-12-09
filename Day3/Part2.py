@@ -1,6 +1,6 @@
 def max_12_digit_number(bank, k=12):
     stack = []
-    remove = len(bank) - k  # total digits we can drop
+    remove = len(bank) - k  
 
     for digit in bank:
         while remove > 0 and stack and stack[-1] < digit:
@@ -8,7 +8,6 @@ def max_12_digit_number(bank, k=12):
             remove -= 1
         stack.append(digit)
 
-    # keep only first k digits
     return int("".join(stack[:k]))
 
 
